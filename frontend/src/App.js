@@ -10,9 +10,9 @@ function App() {
       <main>
         <ImageGrid />
       </main>
-      <footer>
-        <p>&copy; 2024 Golden Gate</p>
-      </footer>
+      {/*<footer>*/}
+      {/*  <p>&copy; 2024 Golden Gate</p>*/}
+      {/*</footer>*/}
     </div>
   );
 }
