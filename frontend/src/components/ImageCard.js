@@ -1,19 +1,24 @@
 import React from 'react';
 
-function ImageCard({ image, logo, profileImg }) {
+const ImageCard = ({ image }) => {
   return (
     <div className="image-card">
-      <img src={image.src} alt={image.alt} />
+      <img src={image.url} alt={image.id} />
       <div className="hover-info">
-        <img src={logo} alt="Gokei Logo" className="logo" />
+        <img src="assets/images/placeholders/logo.png" alt="Gokei Logo" className="logo" />
         <div className="bottom-info">
-          <img src={profileImg} alt="Author" className="author-img" />
-          <span className="author-text">{image.author}</span>
+          <img src={image.author.profile_image} alt="Author" className="author-img" />
+          <span className="author-text">
+            {image.author.name}: {image.author.username}
+            {image.author.twitter_username && (
+              <span> (Twitter: @{image.author.twitter_username})</span>
+            )}
+          </span>
         </div>
       </div>
       <div className="tags">
         {image.tags.map((tag, index) => (
-          <span key={index} className="tag">{tag}</span>
+          <span key={index} className="tag">{tag.title}</span>
         ))}
       </div>
     </div>
