@@ -34,11 +34,15 @@ class Author(db.Model):
     id = db.Column(db.String, primary_key=True)
     username = db.Column(db.String, nullable=False)
     name = db.Column(db.String, nullable=False)
+    profile_image = db.Column(db.String, nullable=False)  # Profile image URL
+    twitter_username = db.Column(db.String, nullable=True)  # Twitter username
     images = db.relationship('Image', backref='author', lazy=True)
 
     def to_dict(self):
         return {
             'id': self.id,
             'username': self.username,
-            'name': self.name
+            'name': self.name,
+            'profile_image': self.profile_image,
+            'twitter_username': self.twitter_username
         }

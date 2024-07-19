@@ -7,7 +7,6 @@ from .models import Image, Tag, Author
 UNSPLASH_API_URL = "https://api.unsplash.com/search/photos"
 UNSPLASH_API_KEY = os.getenv('UNSPLASH_API_KEY')
 
-
 @app.route('/sync', methods=['GET'])
 def sync_images():
     """
@@ -24,7 +23,15 @@ def sync_images():
         author_data = result['user']
         author = Author.query.filter_by(id=author_data['id']).first()
         if not author:
-            author = Author(id=author_data['id'], username=author_data['username'], name=author_data['name'])
+            profile_image = author_data['profile_image']['large']
+            twitter_username = author_data.get('social', {}).get('twitter_username')
+            author = Author(
+                id=author_data['id'],
+                username=author_data['username'],
+                name=author_data['name'],
+                profile_image=profile_image,
+                twitter_username=twitter_username
+            )
             db.session.add(author)
 
         image = Image.query.filter_by(id=result['id']).first()
@@ -41,7 +48,6 @@ def sync_images():
         db.session.commit()
 
     return jsonify({'message': 'Images synchronized successfully!'})
-
 
 @app.route('/images', methods=['GET'])
 def get_images():
