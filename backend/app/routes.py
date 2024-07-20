@@ -16,7 +16,7 @@ def sync_images():
     """
     Synchronize images from Unsplash API.
 
-    This endpoint fetches 20 images from the Unsplash API based on the query parameter,
+    This endpoint fetches 30 images from the Unsplash API based on the query parameter,
     and stores them in the local database, including the associated authors and tags.
     """
     sync_status = SyncStatus.query.first()
@@ -28,7 +28,7 @@ def sync_images():
         params={
             "query": query,
             "client_id": UNSPLASH_API_KEY,
-            "per_page": 20,
+            "per_page": 30,
             "page": current_page,
         },
     )
@@ -73,10 +73,13 @@ def sync_images():
 @app.route("/images", methods=["GET"])
 def get_images():
     """
-    Get all images from the database.
+    Get images from the database with pagination.
 
-    This endpoint returns a list of all images stored in the local database,
+    This endpoint returns a list of images stored in the local database,
     including the associated authors and tags.
     """
-    images = Image.query.all()
+    page = request.args.get("page", 1, type=int)
+    limit = request.args.get("limit", 30, type=int)
+    offset = (page - 1) * limit
+    images = Image.query.offset(offset).limit(limit).all()
     return jsonify([image.to_dict() for image in images])

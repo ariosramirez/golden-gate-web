@@ -12,9 +12,6 @@ function App() {
       <main className="main-content main-container">
         <ImageGrid />
       </main>
-      {/*<footer className="footer">*/}
-      {/*  <p>&copy; 2024 Golden Gate</p>*/}
-      {/*</footer>*/}
     </div>
   );
 }
