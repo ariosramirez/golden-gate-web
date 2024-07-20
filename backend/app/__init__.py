@@ -12,11 +12,16 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
-    CORS(app)  # Enable CORS
+    CORS(app)
 
     with app.app_context():
+        from .models import SyncStatus  # Import SyncStatus model
         from . import routes, models  # Import routes and models to register with the app
         db.create_all()
+        if not SyncStatus.query.first():
+            sync_status = SyncStatus(current_page=1)
+            db.session.add(sync_status)
+            db.session.commit()
 
     return app
 

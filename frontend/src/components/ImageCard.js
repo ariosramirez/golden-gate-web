@@ -5,13 +5,13 @@ const ImageCard = ({ image }) => {
     <div className="image-card">
       <img src={image.url} alt={image.id} />
       <div className="hover-info">
-        <img src="assets/images/placeholders/logo.png" alt="Gokei Logo" className="logo" />
+        <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Gokei Logo" className="logo" />
         <div className="bottom-info">
           <img src={image.author.profile_image} alt="Author" className="author-img" />
           <span className="author-text">
             {image.author.name}: {image.author.username}
             {image.author.twitter_username && (
-              <span> (Twitter: @{image.author.twitter_username})</span>
+              <span> (X: @{image.author.twitter_username})</span>
             )}
           </span>
         </div>

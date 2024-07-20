@@ -46,3 +46,8 @@ class Author(db.Model):
             'profile_image': self.profile_image,
             'twitter_username': self.twitter_username
         }
+
+
+class SyncStatus(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    current_page = db.Column(db.Integer, nullable=False, default=1)

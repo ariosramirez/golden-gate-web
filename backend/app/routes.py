@@ -2,21 +2,33 @@ import os
 import requests
 from flask import request, jsonify, current_app as app
 from . import db
-from .models import Image, Tag, Author
+from .models import Image, Tag, Author, SyncStatus
 
 UNSPLASH_API_URL = "https://api.unsplash.com/search/photos"
 UNSPLASH_API_KEY = os.getenv('UNSPLASH_API_KEY')
+
+
+current_page = 1  # Global variable to store the current page number
+
 
 @app.route('/sync', methods=['GET'])
 def sync_images():
     """
     Synchronize images from Unsplash API.
 
-    This endpoint fetches images from the Unsplash API based on the query parameter,
+    This endpoint fetches 20 images from the Unsplash API based on the query parameter,
     and stores them in the local database, including the associated authors and tags.
     """
+    sync_status = SyncStatus.query.first()
+    current_page = sync_status.current_page
+
     query = request.args.get('query', 'golden-gate')
-    response = requests.get(UNSPLASH_API_URL, params={'query': query, 'client_id': UNSPLASH_API_KEY})
+    response = requests.get(UNSPLASH_API_URL, params={
+        'query': query,
+        'client_id': UNSPLASH_API_KEY,
+        'per_page': 20,
+        'page': current_page
+    })
     data = response.json()
 
     for result in data['results']:
@@ -46,6 +58,9 @@ def sync_images():
                     db.session.add(tag)
                 image.tags.append(tag)
         db.session.commit()
+
+    sync_status.current_page += 1  # Increment the page number
+    db.session.commit()  # Save the new page number
 
     return jsonify({'message': 'Images synchronized successfully!'})
 

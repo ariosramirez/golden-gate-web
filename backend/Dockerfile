@@ -4,14 +4,18 @@ FROM python:3.8-slim-buster
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Copy requirements into the container at /app
+COPY ./requirements.txt /app/requirements.txt
 
 # Copy the environment file
 COPY .env .env
 
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
 
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
