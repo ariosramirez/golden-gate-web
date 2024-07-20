@@ -1,70 +1,140 @@
-# Getting Started with Create React App
+# Golden Gate Image Gallery
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project showcases images of the Golden Gate fetched from the Unsplash API. The application displays these images in a grid and provides hover effects to show additional information about the author, such as profile picture, username, and Twitter handle, along with corresponding tags for each image.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Fetch images from Unsplash based on the search term "Golden Gate".
+- Display the first 20 images in a responsive grid.
+- Implement hover effects to show the author's profile picture, username, and Twitter handle.
+- Include corresponding tags for each image.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Flask for the backend.
+- React.js for the frontend.
+- Unsplash API for fetching images.
+- HTML/CSS/JavaScript for displaying images and hover effects.
+- Docker for containerization.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- [Docker](https://www.docker.com/products/docker-desktop)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- Unsplash API Access Key (Sign up at [Unsplash Developers](https://unsplash.com/developers))
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/golden-gate-image-gallery.git
+    cd golden-gate-image-gallery
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Set up environment variables:
+    - Create a `.env` file in the root directory and add your Unsplash API key:
+    ```env
+    UNSPLASH_API_KEY=your_unsplash_api_key
+    ```
 
-### `npm run eject`
+### Running the Application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Build and start the Docker containers**:
+    ```bash
+    docker-compose up --build
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Access the Frontend**:
+    - Navigate to `http://localhost:3000` in your web browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Access the Backend**:
+    - The Flask API will be running at `http://localhost:5000`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Here is an overview of the project structure:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+.
+├── README.md
+├── backend
+│   ├── Dockerfile
+│   ├── app
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   └── routes.py
+│   ├── images_data
+│   ├── requirements.txt
+│   └── run.py
+├── docker-compose.yml
+└── frontend
+    ├── Dockerfile
+    ├── package-lock.json
+    ├── package.json
+    ├── public
+    │   ├── favicon.ico
+    │   ├── index.html
+    │   ├── logo.png
+    │   ├── manifest.json
+    │   └── robots.txt
+    ├── src
+    │   ├── App.css
+    │   ├── App.js
+    │   ├── App.test.js
+    │   ├── assets
+    │   │   └── images
+    │   │       ├── placeholders
+    │   │       │   ├── image1.jpg
+    │   │       │   ├── image2.jpg
+    │   │       │   ├── image3.jpg
+    │   │       │   ├── image4.jpg
+    │   │       │   ├── image5.jpg
+    │   │       │   ├── image6.jpg
+    │   │       │   └── logo.png
+    │   │       └── users
+    │   │           └── profile-1.avif
+    │   ├── components
+    │   │   ├── ImageCard.js
+    │   │   └── ImageGrid.js
+    │   ├── index.css
+    │   ├── index.js
+    │   ├── reportWebVitals.js
+    │   ├── setupTests.js
+    │   └── styles
+    │       ├── grid.css
+    │       └── main.css
+    └── tests
+        ├── Grid.test.js
+        └── ImageCard.test.js
+```
 
-### Code Splitting
+### Directory and File Description
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+- **docker-compose.yml**: Docker Compose configuration file to set up the backend and frontend services.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+- **backend/**: Contains the backend code using Flask.
+  - **app/**: Contains the Flask application code.
+  - **images_data/**: Directory to store the SQLite database file.
+  - **requirements.txt**: Python dependencies for the backend.
+  - **run.py**: Entry point to run the Flask application.
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **frontend/**: Contains the frontend code using React.js.
+  - **public/**: Contains the static files for the React app.
+  - **src/**: Contains the source code for the React app.
+    - **assets/**: Contains static assets like images.
+      - **images/**: Contains image files used in the app.
+    - **components/**: Contains React components.
+    - **styles/**: Contains additional CSS files.
+  - **tests/**: Contains test files for the React components.
 
-### Advanced Configuration
+## Contribution
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feel free to fork this repository and make contributions. Pull requests are welcome.
