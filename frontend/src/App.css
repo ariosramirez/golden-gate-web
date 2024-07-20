@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.header, .footer {
+  margin: 20px;
+}
+
+.main-content {
+  margin: 20px;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    margin-inline: auto;
+    max-width: 1320px;
+    width: 100%;
+  }
+}
