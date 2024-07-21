@@ -21,7 +21,6 @@ def sync_images():
     """
     sync_status = SyncStatus.query.first()
     current_page = sync_status.current_page
-
     query = request.args.get("query", "golden-gate")
     response = requests.get(
         UNSPLASH_API_URL,
@@ -32,6 +31,9 @@ def sync_images():
             "page": current_page,
         },
     )
+    if response.status_code != 200:
+        return jsonify({"error": "Failed to fetch images from Unsplash API"}), response.status_code
+
     data = response.json()
 
     for result in data["results"]:
@@ -83,3 +85,4 @@ def get_images():
     offset = (page - 1) * limit
     images = Image.query.offset(offset).limit(limit).all()
     return jsonify([image.to_dict() for image in images])
+

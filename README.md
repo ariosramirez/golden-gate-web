@@ -4,10 +4,42 @@
 
 This project showcases images of the Golden Gate fetched from the Unsplash API. The application displays these images in a grid and provides hover effects to show additional information about the author, such as profile picture, username, and Twitter handle, along with corresponding tags for each image.
 
+---
+
+### Tecnologías Utilizadas en el Proyecto
+
+1. **Python**
+   - **Razón**: Es un lenguaje de programación versátil y potente utilizado para el backend de la aplicación. Se elige por su legibilidad, simplicidad y el vasto ecosistema de bibliotecas y frameworks que aceleran el desarrollo. Ademas es el lenguaje que mas experiencia tengo
+
+2. **Flask**
+   - **Razón**: Por que es un framework web ligero para Python que proporciona las herramientas esenciales para construir aplicaciones web de manera rápida y con un mínimo de complejidad.
+
+3. **SQLAlchemy**
+   - **Razón**: Es una potente herramienta SQL y una biblioteca de mapeo objeto-relacional (ORM) para Python.
+
+4. **React.js**
+   - **Razón**: Se elige por su arquitectura basada en componentes, lo que facilita la construcción y el mantenimiento de interfaces de usuario complejas.
+
+5. **Docker**
+   - **Razón**: Se elige por su capacidad para proporcionar entornos consistentes en diferentes etapas del desarrollo, desde el desarrollo local hasta la producción.
+
+6. **Docker Compose**
+   - **Razón**: Se elige por su capacidad para gestionar múltiples servicios de contenedores (como el backend y el frontend) con un solo comando, simplificando los flujos de trabajo de desarrollo y despliegue.
+
+7. **Axios**
+    - **Razón**: Axios es un cliente HTTP basado en promesas para JavaScript. Se elige para realizar solicitudes HTTP desde el navegador, facilitando la comunicación entre el frontend y el backend de la aplicación.
+
+8. **Masonry**
+    - **Razón**: Masonry es una biblioteca de diseño de cuadrícula en JavaScript. Se elige para crear diseños receptivos y dinámicos que se ajusten a diferentes tamaños de pantalla y cantidades de contenido, mejorando la presentación visual del grid de imágenes.
+
+Al aprovechar estas tecnologías, el proyecto asegura una aplicación robusta, escalable y mantenible que puede ser desarrollada, probada y desplegada de manera eficiente. Cada tecnología se elige en función de sus fortalezas y de cómo encaja en la arquitectura y los requisitos generales del proyecto.
+
+---
+
 ## Features
 
 - Fetch images from Unsplash based on the search term "Golden Gate".
-- Display the first 20 images in a responsive grid.
+- Display the first 30 images in a responsive grid.
 - Implement hover effects to show the author's profile picture, username, and Twitter handle.
 - Include corresponding tags for each image.
 
