@@ -86,6 +86,12 @@ Al aprovechar estas tecnologías, el proyecto asegura una aplicación robusta, e
 3. **Access the Backend**:
     - The Flask API will be running at `http://localhost:5000`.
 
+### Running Python Tests with Docker
+
+```bash
+docker run -it --rm -v $(PWD):/app -p 5000:5000 golden-gate-web-backend pytest
+```
+
 
 ## Project Structure
 
