@@ -6,33 +6,33 @@ This project showcases images of the Golden Gate fetched from the Unsplash API. 
 
 ---
 
-### Tecnologías Utilizadas en el Proyecto
+### Technologies Used in the Project
 
 1. **Python**
-   - **Razón**: Es un lenguaje de programación versátil y potente utilizado para el backend de la aplicación. Se elige por su legibilidad, simplicidad y el vasto ecosistema de bibliotecas y frameworks que aceleran el desarrollo. Ademas es el lenguaje que mas experiencia tengo
+   - **Reason**: It is a versatile and powerful programming language used for the application's backend. It is chosen for its readability, simplicity, and the vast ecosystem of libraries and frameworks that accelerate development. Additionally, it is the language I have the most experience with.
 
 2. **Flask**
-   - **Razón**: Por que es un framework web ligero para Python que proporciona las herramientas esenciales para construir aplicaciones web de manera rápida y con un mínimo de complejidad.
+   - **Reason**: Because it is a lightweight web framework for Python that provides essential tools for quickly building web applications with minimal complexity.
 
 3. **SQLAlchemy**
-   - **Razón**: Es una potente herramienta SQL y una biblioteca de mapeo objeto-relacional (ORM) para Python.
+   - **Reason**: It is a powerful SQL toolkit and an Object-Relational Mapping (ORM) library for Python.
 
 4. **React.js**
-   - **Razón**: Se elige por su arquitectura basada en componentes, lo que facilita la construcción y el mantenimiento de interfaces de usuario complejas.
+   - **Reason**: It is chosen for its component-based architecture, which makes it easier to build and maintain complex user interfaces.
 
 5. **Docker**
-   - **Razón**: Se elige por su capacidad para proporcionar entornos consistentes en diferentes etapas del desarrollo, desde el desarrollo local hasta la producción.
+   - **Reason**: It is chosen for its ability to provide consistent environments across different stages of development, from local development to production.
 
 6. **Docker Compose**
-   - **Razón**: Se elige por su capacidad para gestionar múltiples servicios de contenedores (como el backend y el frontend) con un solo comando, simplificando los flujos de trabajo de desarrollo y despliegue.
+   - **Reason**: It is chosen for its ability to manage multiple containerized services (such as the backend and frontend) with a single command, simplifying development and deployment workflows.
 
 7. **Axios**
-    - **Razón**: Axios es un cliente HTTP basado en promesas para JavaScript. Se elige para realizar solicitudes HTTP desde el navegador, facilitando la comunicación entre el frontend y el backend de la aplicación.
+    - **Reason**: Axios is a promise-based HTTP client for JavaScript. It is chosen to make HTTP requests from the browser, facilitating communication between the frontend and backend of the application.
 
 8. **Masonry**
-    - **Razón**: Masonry es una biblioteca de diseño de cuadrícula en JavaScript. Se elige para crear diseños receptivos y dinámicos que se ajusten a diferentes tamaños de pantalla y cantidades de contenido, mejorando la presentación visual del grid de imágenes.
+    - **Reason**: Masonry is a grid layout library in JavaScript. It is chosen to create responsive and dynamic layouts that adjust to different screen sizes and content amounts, enhancing the visual presentation of the image grid.
 
-Al aprovechar estas tecnologías, el proyecto asegura una aplicación robusta, escalable y mantenible que puede ser desarrollada, probada y desplegada de manera eficiente. Cada tecnología se elige en función de sus fortalezas y de cómo encaja en la arquitectura y los requisitos generales del proyecto.
+By leveraging these technologies, the project ensures a robust, scalable, and maintainable application that can be developed, tested, and deployed efficiently. Each technology is chosen based on its strengths and how it fits into the overall architecture and requirements of the project.
 
 ---
 
